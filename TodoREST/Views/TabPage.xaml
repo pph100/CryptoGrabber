@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TodoREST"
+    x:Class="TodoREST.TabPage"
+    x:Name="_todoTabPage"
+    Title="Tab">
+
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="+"
+                     Clicked="OnAddItemClicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, UWP"
+                        Value="plus.png" />
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </TabbedPage.ToolbarItems>
+
+    <local:CryptoListPage
+        Title="Stock"
+        Appearing="Handle_Appearing_CryptoPage"
+        x:Name="CryptoPage" />
+
+    <local:AssetListPage
+        Title="Assets"
+        Appearing="Handle_Appearing_AssetPage"
+        x:Name="AssetPage" />
+
+    <!--
+        <local:TodoListPage 
+            Title="Aufgaben"
+            Appearing="Handle_Appearing_ToDoPage"
+            x:Name="AufgabenPage"/>
+    
+        <local:PersonListPage 
+            Title="Personen"
+            Appearing="Handle_Appearing_PersonPage"
+            x:Name="PersonenPage"/>
+    -->
+
+    <local:AboutPage
+        Title="Über"
+        Appearing="Handle_Appearing_OtherPage"
+        x:Name="AboutPage" />
+
+
+</TabbedPage>

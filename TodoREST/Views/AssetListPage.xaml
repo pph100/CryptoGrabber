@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:lc="clr-namespace:TodoREST"
+    x:Class="TodoREST.AssetListPage" 
+    x:Name="_assetListPage"
+    Title="Assets">
+
+	<ListView 
+        x:Name="listView" 
+        Margin="20" 
+        ItemSelected="OnAssetSelected" 
+        IsPullToRefreshEnabled="true" >
+        
+        <ListView.Header>
+             <Grid HorizontalOptions="FillAndExpand">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Ticker" TextColor="Black" FontFamily="Bold" BackgroundColor="LightBlue"  Grid.Column="0" />
+                <Label Text="Name"   TextColor="Black" FontFamily="Bold" BackgroundColor="LightBlue"  Grid.Column="1" />
+                <Label Text="Stock"  TextColor="Black" FontFamily="Bold" BackgroundColor="LightBlue"  Grid.Column="2" />
+                <Label Text="Price"  TextColor="Black" FontFamily="Bold" BackgroundColor="LightBlue"  Grid.Column="3" />
+
+            </Grid>
+        </ListView.Header>
+
+
+		<ListView.ItemTemplate>
+			<DataTemplate>
+
+                <ViewCell x:Name="viewCell">
+
+                    <ViewCell.ContextActions>
+                        <MenuItem Clicked="OnCancel" CommandParameter="{Binding .}" Text="Abbruch" />
+                        <!-- <MenuItem Clicked="OnCopyToNew" CommandParameter="{Binding .}" Text="create new..." /> -->
+                    </ViewCell.ContextActions>
+
+                    <Grid HorizontalOptions="FillAndExpand">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                    
+                        <Label
+                            x:Name="xTicker"
+                            Text="{Binding Path=AssetTicker}"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center">
+                        </Label>
+
+                        <Label  
+                            x:Name="xName"
+                            Text="{Binding Path=AssetName}" 
+                            Grid.Column="1"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                        
+                        <Label  
+                            x:Name="xStock"
+                            Text="{Binding Path=AssetStock}" 
+                            Grid.Column="2"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                        
+                        <Label  
+                            x:Name="xPrice"
+                            Text="{Binding Path=prettyValue}"
+                            Grid.Column="3"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                            <!-- Text="{Binding Path=prettyValue}" -->
+                        
+                        <!-- 
+                        <Label  
+                            x:Name="xClass"
+                            Text="{Binding AssetClass}" 
+                            Grid.Column="4"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                        -->
+
+                     </Grid>
+                        
+                </ViewCell>
+
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+
+</ContentPage>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:local="clr-namespace:TodoREST"
+             x:Class="TodoREST.AssetHistoryPage"
+             Title="Asset History">
+
+    <!-- <ContentPage.Content> -->
+    <chart:SfChart x:Name="mySfChart"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand">
+
+
+        <chart:SfChart.BindingContext>
+            <local:AssetHistoryService />
+        </chart:SfChart.BindingContext>
+
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text="" />
+        </chart:SfChart.Title>
+
+        <chart:SfChart.ChartBehaviors>
+            <chart:ChartTrackballBehavior ShowLabel="True"
+                                          ShowLine="True" />
+        </chart:SfChart.ChartBehaviors>
+
+        <chart:SfChart.PrimaryAxis>
+            <chart:CategoryAxis ShowTrackballInfo="True"
+                                Interval="7">
+                <chart:CategoryAxis.Title>
+                    <chart:ChartAxisTitle Text="Date" />
+                </chart:CategoryAxis.Title>
+            </chart:CategoryAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis>
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Value in €" />
+                </chart:NumericalAxis.Title>
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:LineSeries
+                x:Name="myLineSeries"
+                ItemsSource="{Binding _AssetHistory}"
+                ListenPropertyChange="True"
+                XBindingPath="DT_DMY"
+                YBindingPath="daily_avg"
+                EnableTooltip="True">
+            </chart:LineSeries>
+        </chart:SfChart.Series>
+    </chart:SfChart>
+
+    <!-- </ContentPage.Content> -->
+</ContentPage>

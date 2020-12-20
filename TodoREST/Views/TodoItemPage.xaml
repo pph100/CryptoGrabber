@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+             x:Class="TodoREST.TodoItemPage" 
+             Title="Aufgabe">
+    
+  <ScrollView>    
+    <StackLayout 
+        Margin="20"
+        VerticalOptions="StartAndExpand">
+        
+            
+        <Label Text="Aufgabe" />
+        <Entry x:Name="notesEntry" Text="{Binding Path=TodoTask}" Placeholder="Task" 
+               TextChanged="Handle_NotesChanged"/> 
+ 
+
+        <Label Text="Termin" />
+        <DatePicker x:Name="dueEntry" Date="{Binding Path=DueDate, StringFormat='{}{0:dd\.MMM\.yyyy}'}"  Format="dd.MM.yyyy" />
+            
+
+        <Label Text="Verantwortlich" />  
+        <Picker 
+            x:Name="responsiblePicker"
+            SelectedItem="{Binding Path=Author}" 
+            Title="select Person" >
+        </Picker>
+
+
+        <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="wichtig?" />
+                <Switch x:Name="highPrioritySwitch" IsToggled="{Binding Path=Urgent}" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="erledigt?" />
+                <Switch x:Name="doneSwitch" IsToggled="{Binding Path=Done}" PropertyChanged="Handle_doneChanged" />
+            </StackLayout>
+        </StackLayout>
+        
+        <Label Text="erledigt von" />
+        <Picker 
+            x:Name="completedPicker"
+            SelectedItem="{Binding Path=CompletedBy}" 
+            IsEnabled="{Binding Path=Done}"
+            Title="select Person" >
+        </Picker>
+
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Created" />
+            <Label x:Name="notesDttmCreated" Text="{Binding Path=DttmCreated}" />
+        </StackLayout>
+        
+            
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Updated" />
+            <Label x:Name="notesDttmLastUpdated" Text="{Binding Path=DttmLastUpdated}" />
+        </StackLayout>
+
+
+        <Button x:Name="SaveButton"   Text="Save"   Clicked="OnSaveActivated" IsEnabled="false"/>
+        <Button x:Name="DeleteButton" Text="Delete" Clicked="OnDeleteActivated" IsEnabled="false" />
+        <Button x:Name="CancelButton" Text="Cancel" Clicked="OnCancelActivated" />
+        
+    </StackLayout>
+  </ScrollView>
+
+</ContentPage>

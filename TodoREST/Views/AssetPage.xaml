@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="TodoREST.AssetPage"
+             Title="Asset">
+
+    <ContentPage.Content>
+        <StackLayout 
+            Margin="20"
+            VerticalOptions="StartAndExpand">
+            
+            <Label Text="Name" />
+            <Entry x:Name="assetName" Text="{Binding Path=AssetName}" />
+
+            <Label Text="Code" />
+            <Entry x:Name="assetTicker" Text="{Binding Path=AssetTicker}" />
+
+            <Label Text="Stock" />
+            <Entry x:Name="assetStock" Text="{Binding Path=AssetStock}" Keyboard="Numeric"  />
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal">
+                <Label Text="Price as of" />
+                <Label Text="{Binding Path=AssetValueDttm}" />
+            </StackLayout>
+            <Entry x:Name="assetValue" Text="{Binding Path=AssetValue}" IsEnabled="false" Keyboard="Numeric" />
+
+            <Label Text="Asset Class" />
+            <Entry x:Name="assetClass" Text="{Binding Path=AssetClass}" />
+
+            <Label Text="Search String" />
+            <Entry x:Name="assetSearchString" Text="{Binding Path=SearchString}" />
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="include in List?" />
+                <Switch x:Name="includeInList" IsToggled="{Binding Path=IncludeInList}" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" Orientation="Horizontal">
+                <Label Text="Created" />
+                <Label x:Name="DttmCreated" Text="{Binding Path=DttmCreated}" />
+                <Label Text="   Updated" />
+                <Label x:Name="DttmLastUpdated" Text="{Binding Path=DttmLastUpdated}" />
+            </StackLayout>
+
+            <Button x:Name="SaveButton"   Text="Save"   Clicked="OnSaveActivated" />
+            <Button x:Name="CancelButton" Text="Cancel" Clicked="OnCancelActivated" />
+        
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

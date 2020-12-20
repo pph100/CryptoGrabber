@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="TodoREST.PersonPage"
+             Title="Person">
+
+    <ContentPage.Content>
+        <StackLayout 
+            Margin="20"
+            VerticalOptions="StartAndExpand">
+
+            <Label Text="Name" />
+            <Entry x:Name="personEntry" Text="{Binding Path=Name}" 
+               TextChanged="Handle_NameChanged"/>
+
+            <Label Text="E-Mail" />
+            <Entry x:Name="personEmailEntry" Text="{Binding Path=Email}" 
+               Keyboard="Email" />
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal">
+                <Label Text="Created" />
+                <Label x:Name="notesDttmCreated" Text="{Binding Path=DttmCreated}" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal">
+                <Label Text="Updated" />
+                <Label x:Name="notesDttmLastUpdated" Text="{Binding Path=DttmLastUpdated}" />
+            </StackLayout>
+
+            <Button x:Name="SaveButton"   Text="Save"   Clicked="OnSaveActivated" IsEnabled="false"/>
+            <Button x:Name="DeleteButton" Text="Delete" Clicked="OnDeleteActivated" IsEnabled="true" />
+            <Button x:Name="CancelButton" Text="Cancel" Clicked="OnCancelActivated" />
+        
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
