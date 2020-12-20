@@ -11,7 +11,7 @@ namespace CryptoGrabber
     {
         public static CryptoItemManager CryptoItemManager { get; private set; }
         public static AssetManager AssetManager { get; private set; }
-        public static AssetHistoryManager AssetHistoryManager { get; private set; }
+        // public static AssetHistoryManager AssetHistoryManager { get; private set; }
 
         [System.Obsolete]
         public App()
@@ -23,7 +23,7 @@ namespace CryptoGrabber
             AssetManager = new AssetManager(new AssetService());
 
             _debug("App()", "about to create AssetHistoryManager instance");
-            AssetHistoryManager = new AssetHistoryManager(new AssetHistoryService());
+            // AssetHistoryManager = new AssetHistoryManager(new AssetHistoryService());
 
         }
 
